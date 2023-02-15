@@ -846,33 +846,7 @@ class MainWindow:
             self.load_control_structure_image()
         elif tab_index == 5:
             self.load_stpa_report()
-        elif tab_index == 6:
-            self.load_dfd_initialize()
-            self.load_dfd_link_initialize()
-            self.load_dfd_links()
-        elif tab_index == 7:
-            self.load_controller_stride()
-        elif tab_index == 8:
-            self.load_stride_report()
-        elif tab_index == 9:
-            self.load_controller_business()
-        elif tab_index == 10:
-            self.load_controller_saf_pef_controller()
-            self.load_controller_saf_pef_uca()
-            self.load_saf_pef_requirements()
-            self.load_saf_pef_resource()
-        elif tab_index == 11:
-            self.load_controller_sec_pef_controller()
-            self.load_controller_sec_pef_priority()
-            self.load_sec_pef_requirements()
-            self.load_sec_pef_resource()
-        elif tab_index == 12:
-            self.load_controller_business_pef()
-            self.load_bus_pef_resource()
-        elif tab_index == 13:
-            self.load_controller_conflict_pef()
-            self.load_resource_conflict_pef()
-            self.load_conflict_requirement()
+        
 
     def onChange(self, i):  # changed!
         tab_index = i
