@@ -1,6 +1,6 @@
 This work is a partial result of an ongoing Ph.D. research performed on Instituto Tecnológico de Aeronáutica - ITA by Andrei Carniel under the supervision of Celso Massaki Hirata.
 
-This application uses an STPA ontology to improve the STPA analysis and achieve a better result. For further explanation and access to the results of this work, read the article: DOI...
+This application uses an STPA ontology to improve the STPA analysis and achieve a better result. For further explanation and access to the results of this work, read the article: DOI 10.1109/ACCESS.2023.3242642
 
 This is the  **source code** for the **AppSTPA**. The code is under **GPL license**.
 
