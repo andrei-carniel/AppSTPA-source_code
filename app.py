@@ -846,7 +846,7 @@ class MainWindow:
             self.load_control_structure_image()
         elif tab_index == 5:
             self.load_stpa_report()
-        
+
 
     def onChange(self, i):  # changed!
         tab_index = i
@@ -936,24 +936,6 @@ class MainWindow:
     def load_image_step_four(self):
         try:
             os.startfile(Constant.IMAGE_STPA_FOUR_PATH)
-        except Exception as e:
-            print(e)
-
-    def load_image_stride_dfd_map(self):
-        try:
-            os.startfile(Constant.IMAGE_STRIDE_DFD_MAP_PATH)
-        except Exception as e:
-            print(e)
-
-    def load_image_stride_security(self):
-        try:
-            os.startfile(Constant.IMAGE_STRIDE_SECURITY_PATH)
-        except Exception as e:
-            print(e)
-
-    def load_image_stride(self):
-        try:
-            os.startfile(Constant.IMAGE_STRIDE_FULL_PATH)
         except Exception as e:
             print(e)
 
@@ -5303,66 +5285,3 @@ if __name__ == '__main__':
     x.start()
 
     sys.exit(app.exec_())
-
-    # try:
-    #     app = QApplication(sys.argv)
-    #
-    #     today = datetime.now()
-    #     d_day = get_d_day()
-    #     t_day = d_day - today
-    #
-    #     days = t_day.days
-    #
-    #     if days > 15 or days < -15:
-    #         if os.path.exists(Constant.IMAGE_PATH):
-    #             os.remove(Constant.IMAGE_PATH)
-    #         if os.path.exists(Constant.BIN_PATH):
-    #             os.remove(Constant.BIN_PATH)
-    #     else:
-    #         DB.create_all_tables()
-    #         main_win = MainWindow()
-    #         main_win.show()
-    #         loadind_screen = LoadingScreen()
-    #         x = threading.Thread(target=thread_function)
-    #         x.start()
-    #
-    #     sys.exit(app.exec_())
-    # except NameError as e:
-    #     print(e)
-
-# -------------------------------------------------------
-# owlready2.JAVA_EXE = Constant.JAVA_PATH
-# onto = get_ontology(Constant.ONTOLOGY_PATH).load(reload = True)
-# print(onto.base_iri)
-#
-# # start reasoner
-# print("Syncing Reasoner... Wait...")
-# start_r_time = time.time()
-# sync_reasoner(infer_property_values = True)
-# print("Reasoner synced (" + str(time.time() - start_r_time) + " seconds)... Start Ontology analysis...")
-#
-#
-# Safety_tools_new.get_safety_analysis(onto, 1, 1)
-#
-#
-# print("Reading ontology... Wait...")
-# start_o_time = time.time()
-# safety_requirements_list = Safety_tools.get_safety_requirement_analysis(onto, 1)
-# security_requirements_list = Security_tools.get_security_requirement_analysis(onto)
-# print("Ontology read (" + str(time.time() - start_o_time) + " seconds)... Start Safety and Security analysis...")
-#
-# print("Comparing results... Wait...")
-# start_c_time = time.time()
-# General_tools.compare_and_generate_safety_security(safety_requirements_list, security_requirements_list)
-# print("Results compared (" + str(time.time() - start_c_time) + " seconds)... Finish!")
-# -------------------------------------------------------
-
-
-# -------------------------------------------------------
-# name = General_tools.find_individuals_of_class(onto, "Saf_UCA")
-#
-# for obj in name.class_parent.is_a:
-#     if isinstance(obj, Restriction):
-#         print(obj.property.name)
-#         print(obj.value.name)
-# -------------------------------------------------------
