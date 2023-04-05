@@ -1421,7 +1421,8 @@ class MainWindow:
         global id_project
 
         try:
-            fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.png *.jpeg *.jpg)')
+            fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.jpeg *.jpg)')
+            # fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.png *.jpeg *.jpg)')
             src = fname[0]
 
             now = datetime.now()
@@ -1453,7 +1454,8 @@ class MainWindow:
         global id_project
 
         try:
-            fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.png *.jpeg *.jpg)')
+            fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.jpeg *.jpg)')
+            # fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.png *.jpeg *.jpg)')
             src = fname[0]
 
             now = datetime.now()
@@ -1485,7 +1487,8 @@ class MainWindow:
         global id_project
 
         try:
-            fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.png *.jpeg *.jpg)')
+            fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.jpeg *.jpg)')
+            # fname = QFileDialog.getOpenFileName(None, 'Open file', './Files', 'Images (*.png *.jpeg *.jpg)')
             src = fname[0]
 
             now = datetime.now()
