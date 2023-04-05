@@ -29,11 +29,12 @@ from datetime import datetime
 from Database import DB
 from Database.safety import DB_Loss_Scenario_Req, DB_Hazards, DB_Components_Links, DB_Components, DB_Losses, \
     DB_Safety_Constraints, DB_Variables, DB_Variables_Values, DB_Projects, DB_Goals, DB_Actions_Components, \
-    DB_Assumptions, DB_UCA, DB_Project_Files
+    DB_Assumptions, DB_UCA, DB_Project_Files, DB_Responsibility
 from Objects.Goal import Goal
 from Objects.Hazard import Hazard, Hazard_Loss
 from Objects.Loss import Loss
 from Objects.Safety_Constraint import Safety_Constraint, Safety_Constraint_Hazard
+from Objects.Responsibility import Responsibility, Responsibility_ssc
 from Tools import Dictionary, General_tools, Safety_tools_new
 
 from shutil import copyfile
@@ -125,7 +126,8 @@ list_four_uca = []
 list_four_loss_causal = []
 list_four_requirements = []
 
-
+list_second_responsibility = []
+list_second_responsibility_ssc = []
 
 qss_black = """
                 QGroupBox {
@@ -173,52 +175,6 @@ def clear_var_step_one():
     list_hazards = []
     list_constraints = []
 
-def clear_var_step_two():
-    # SECOND STEP VARS
-    global list_component_controller, list_component_controller_variables, list_component_controller_variables_values, list_component_exti, \
-        list_component_actuator, list_component_sensor, list_component_exts, list_component_controlled_process, list_component_controlled_process_variables, \
-        list_component_controlled_process_variables_values, list_controlled_process_envd, list_controlled_process_input, list_controlled_process_output, \
-        list_controlled_process_env_dist, list_controlled_process_envd_variables, list_controlled_process_input_variables, list_controlled_process_envd_variables_values, \
-        list_controlled_process_input_variables_values, list_controlled_process_output_variables, list_controlled_process_output_variables_values, list_control_actions, \
-        list_links_controller, list_links_exts, list_links_actuator, list_links_sensor, list_links_controlled_process, list_connection_controller, list_connection_exts, \
-        list_connection_actuator, list_connection_sensor, list_connection_controlled_process, list_links_variable_controller, list_links_actions_controller, \
-        list_controller_hlcs, list_controller_hlcs_links
-
-    list_component_controller = []
-    list_component_controller_variables = []
-    list_component_controller_variables_values = []
-    list_component_exti = []
-    list_component_actuator = []
-    list_component_sensor = []
-    list_component_exts = []
-    list_component_controlled_process = []
-    list_component_controlled_process_variables = []
-    list_component_controlled_process_variables_values = []
-    list_controlled_process_envd = []
-    list_controlled_process_input = []
-    list_controlled_process_output = []
-    list_controlled_process_env_dist = []
-    list_controlled_process_envd_variables = []
-    list_controlled_process_input_variables = []
-    list_controlled_process_envd_variables_values = []
-    list_controlled_process_input_variables_values = []
-    list_controlled_process_output_variables = []
-    list_controlled_process_output_variables_values = []
-    list_control_actions = []
-    list_links_controller = []
-    list_links_exts = []
-    list_links_actuator = []
-    list_links_sensor = []
-    list_links_controlled_process = []
-    list_connection_controller = []
-    list_connection_exts = []
-    list_connection_actuator = []
-    list_connection_sensor = []
-    list_connection_controlled_process = []
-    list_links_variable_controller = []
-    list_links_actions_controller = []
-    list_controller_hlcs = []
-    list_controller_hlcs_links = []
 
 def clear_var_step_three():
     # THIRD STEP VARS
@@ -723,6 +679,14 @@ class MainWindow:
         self.ui.button_cancel_controller_variable_values.clicked.connect(self.on_button_cancel_controller_variable_values_clicked)
         self.ui.listwidget_controller_variable_values.currentRowChanged.connect(self.on_listwidget_controller_variable_values_clicked)
 
+        self.ui.button_saf_new_responsibility.clicked.connect(self.on_button_saf_new_responsibility_clicked)
+        self.ui.button_saf_update_responsibility.clicked.connect(self.on_button_saf_update_reponsability_clicked)
+        self.ui.button_saf_delete_responsibility.clicked.connect(self.on_button_saf_delete_reponsability_clicked)
+        self.ui.button_saf_cancel_responsibility.clicked.connect(self.on_button_saf_cancel_responsibility_clicked)
+
+        self.ui.list_second_responsibility.currentRowChanged.connect(self.on_list_responsibility_clicked)
+        self.ui.list_second_responsibility.wheelEvent = lambda event: None
+
         self.ui.button_structure_check.clicked.connect(self.check_control_structure)
         # ----- TAB Second Step -----
 
@@ -833,6 +797,8 @@ class MainWindow:
             self.load_component_sensor()
             self.load_component_controlled_proccess()
 
+            self.load_second_responsibility_ssc()
+
             self.check_control_structure()
         if tab_index == 2:
             clear_var_step_three()
@@ -842,6 +808,7 @@ class MainWindow:
         elif tab_index == 3:
             clear_var_step_four()
             self.load_combobox_fourth_controller()
+            self.load_fourth_loss_img()
         elif tab_index == 4:
             self.load_control_structure_image()
         elif tab_index == 5:
@@ -1031,6 +998,44 @@ class MainWindow:
         self.label.setText(text)
         return self.label
 
+    def get_label_image(self, path):
+        global stpa_pdf_report_list
+
+        try:
+            self.label = QLabel()
+            pixmap = QtGui.QPixmap(path)
+            width = 1000
+            iw = pixmap.width()
+            ih = pixmap.height()
+            aspect = ih / float(iw)
+            height = int(width * aspect)
+            self.label.setPixmap(pixmap.scaled(width, height, Qt.KeepAspectRatio))
+
+            return self.label
+        except Exception as e:
+            print(e)
+
+            font_11 = QFont('Arial', 11)
+            self.label = QLabel()
+            self.label.setFont(font_11)
+            self.label.setWordWrap(True)
+            self.label.setText("  Error to load image.")
+
+            return self.label
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def get_label_12_bold_subtitle(self, text):
         font_12_b = QFont('Arial', 12)
         font_12_b.setBold(True)
@@ -1209,6 +1214,7 @@ class MainWindow:
 
             layout.addWidget(self.get_label_11_text(
                 "R-" + str(count_ls) + " (" + rec.name_src + spacer + rec.name_dst + "): UCA-" + str(self.get_number_uca(rec.id_uca, list_aux_uca))))
+            layout.addWidget(self.get_label_11_text("Type: " + rec.classification))
             layout.addWidget(self.get_label_11_text("Cause: " + rec.cause))
             layout.addWidget(self.get_label_11_text("Recommendation: " + rec.requirement))
             layout.addWidget(self.get_label_11_text("Mechanism: " + rec.mechanism + "\n"))
@@ -1218,10 +1224,42 @@ class MainWindow:
         self.ui.scrollArea_fifith_report.setWidget(top_widget)
 
         # report
-        layout.addWidget(self.get_label_14_title("\nLink Report"))
+        layout.addWidget(self.get_label_14_title("\nLink with energy"))
         list_omitted_links = DB_Components_Links.select_omitted_links(id_project)
         for omt in list_omitted_links:
             layout.addWidget(self.get_label_11_text(omt))
+
+        # show control structure images
+        layout.addWidget(self.get_label_14_title("\nShow control structure images"))
+        has_image = False
+
+        try:
+            path_one = DB_Project_Files.select_images_by_project(id_project, 1)
+            if path_one != "":
+                layout.addWidget(self.get_label_image(path_one))
+                has_image = True
+        except NameError as e:
+            print(e)
+
+        try:
+            path_two = DB_Project_Files.select_images_by_project(id_project, 2)
+            if path_two != "":
+                layout.addWidget(self.get_label_image(path_two))
+                has_image = True
+        except NameError as e:
+            print(e)
+
+        try:
+            path_three = DB_Project_Files.select_images_by_project(id_project, 3)
+            if path_three != "":
+                layout.addWidget(self.get_label_image(path_three))
+                has_image = True
+        except NameError as e:
+            print(e)
+
+        if not has_image:
+            layout.addWidget(self.get_label_12_text("No control structure images found."))
+
 
     def get_number_uca(self, id_uca, list_aux_uca):
         count = 1
@@ -1252,6 +1290,21 @@ class MainWindow:
                 aux_name += " (external of analysis)"
 
             layout.addWidget(self.get_label_12_bold_subtitle(aux_name))
+
+            if (id_comp == Constant.DB_ID_CONTROLLER):
+                layout.addWidget(self.get_label_12_text("responsibilities: "))
+
+                list_responsibility = DB_Responsibility.select_all_responsibilities_by_controller(comp.id)
+
+                for pos in range(len(list_responsibility)):
+
+                    text = ""
+                    for ssc in list_responsibility[pos].list_of_ssc:
+                        text += "[SSC-" + str(ssc.id_constraint_screen) + "] "
+
+                    layout.addWidget(self.get_label_11_text(
+                        "    R-" + str(list_responsibility[pos].id_screen) + ": " + str(
+                            list_responsibility[pos].description + ". " + text)))
 
             layout.addWidget(self.get_label_12_text("Outgoing connections"))
             for link in DB_Components_Links.select_component_links_by_project_and_component(comp.id, True):
@@ -1585,6 +1638,19 @@ class MainWindow:
         elif len(list_four_controller) > 0:
             self.load_combobox_fourth_control_action()
 
+    def load_fourth_loss_img(self):
+        try:
+            self.ui.label_fourth_loss_img.setPixmap(QtGui.QPixmap(Constant.DEFAULT_IMAGE_PATH))
+        except NameError as e:
+            print(e)
+
+        try:
+            # pixmap = QtGui.QPixmap(Constant.IMAGE_STPA_LOSS).scaledToWidth(700)
+            # self.ui.label_fourth_loss_img.setPixmap(pixmap)
+            self.ui.label_fourth_loss_img.setPixmap(QtGui.QPixmap(Constant.IMAGE_STPA_LOSS))
+        except NameError as e:
+            print(e)
+
     def load_combobox_fourth_control_action(self):
         global list_four_control_action, id_project
 
@@ -1675,7 +1741,8 @@ class MainWindow:
             if loss.side == "B":
                 side = "Left"
 
-            item = side + " Side" + " - " + loss.onto_name + "\n"
+            item = ">> " + loss.classification + "\n"
+            item += "Element: " + loss.onto_name + "\n"
             item += "Causal Factor: " + loss.causes + "\n"
             item += "Recommendation: " + loss.requirement + "\n"
 
@@ -1729,6 +1796,7 @@ class MainWindow:
                     src_dst = req.name_src + spacer + req.name_dst
 
                 item = "R-" + str(count) + " (" + src_dst + "): \n"
+                item += "Type: " + req.classification + "\n"
                 item += "Cause: " + req.cause + "\n"
                 item += "Recommendation: " + req.requirement + "\n"
                 item += "Mechanism: " + req.mechanism + "\n"
@@ -1771,7 +1839,7 @@ class MainWindow:
                                 lc.requirement,
                                 lc.causes,
                                 lc.mechanism,
-                                "", "", "")
+                                "", "", "", "", lc.classification)
 
         id_req = DB_Loss_Scenario_Req.insert(req)
 
@@ -1834,7 +1902,7 @@ class MainWindow:
                                     requirement,
                                     cause,
                                     mechanism,
-                                    "", "", "")
+                                    "", "", "", "", lc.classification)
 
             id_req = DB_Loss_Scenario_Req.insert(req)
 
@@ -2893,6 +2961,9 @@ class MainWindow:
         else:
             self.selection_change_controller_connection()
 
+        self.load_responsibilities()
+        self.clear_new_responsibility()
+
     def disable_edit_controller(self):
         self.ui.button_add_controller.setEnabled(True)
         self.ui.button_update_controller.setEnabled(False)
@@ -3201,6 +3272,174 @@ class MainWindow:
 
             self.load_controller_connections()
 
+    def load_second_responsibility_ssc(self):
+        global list_second_responsibility_ssc, id_project
+        list_second_responsibility_ssc = []
+        self.ui.list_second_safety_constraints.clear()
+
+        list_second_responsibility_ssc = DB_Safety_Constraints.select_all_safety_constraints_by_project(id_project)
+        for pos in range(len(list_second_responsibility_ssc)):
+            text = ""
+            for haz in list_second_responsibility_ssc[pos].list_of_hazards:
+                text += "[H-" + str(haz.id_haz_screen) + "] "
+
+            self.ui.list_second_safety_constraints.addItem(
+                "SSC-" + str(list_second_responsibility_ssc[pos].id_safety_constraint) + ": " +
+                list_second_responsibility_ssc[pos].description + " " + text)
+        self.clear_new_responsibility()
+
+    def on_button_saf_new_responsibility_clicked(self):
+        global id_project, list_second_responsibility, list_second_responsibility_ssc, list_component_controller
+
+        description = self.ui.lineedit_second_responsibility.text()
+        if len(description) == 0:
+            showdialog("Error on save", "Fill the field with description")
+            return
+
+        pos_c = self.ui.combobox_second_controller.currentIndex()
+        if pos_c < 0:
+            return
+
+        responsibility = Responsibility(0, description, id_project, len(list_second_responsibility) + 1,
+                                        list_component_controller[pos_c].id, [])
+
+        selected_ssc = []
+        for item in self.ui.list_second_safety_constraints.selectedItems():
+            ssc_id = list_second_responsibility_ssc[self.ui.list_second_safety_constraints.row(item)].id
+            selected_ssc.append(Responsibility_ssc(0, 0, ssc_id))
+
+        responsibility.list_of_ssc = selected_ssc
+        DB_Responsibility.insert_to_responsibility(responsibility)
+
+        self.clear_new_responsibility()
+        self.load_responsibilities()
+
+    def load_responsibilities(self):
+        global id_project, list_second_responsibility, list_component_controller
+        # pos = self.ui.list_second_responsibility.currentRow()
+        list_second_responsibility = []
+        self.ui.list_second_responsibility.clear()
+
+        pos_c = self.ui.combobox_second_controller.currentIndex()
+        if pos_c < 0:
+            return
+
+        list_second_responsibility = DB_Responsibility.select_all_responsibilities_by_controller(
+            list_component_controller[pos_c].id)
+
+        for pos in range(len(list_second_responsibility)):
+
+            text = ""
+            for ssc in list_second_responsibility[pos].list_of_ssc:
+                text += "[SSC-" + str(ssc.id_constraint_screen) + "] "
+
+            self.ui.list_second_responsibility.addItem(
+                "R-" + str(list_second_responsibility[pos].id_screen) + ": " + str(
+                    list_second_responsibility[pos].description + ". " + text))
+
+    def on_list_responsibility_clicked(self):
+        global list_second_responsibility, list_second_responsibility_ssc
+        pos_resp = self.ui.list_second_responsibility.currentRow()
+
+        if pos_resp < 0:
+            return
+
+        self.ui.button_saf_new_responsibility.setEnabled(False)
+        self.ui.button_saf_update_responsibility.setEnabled(True)
+        self.ui.button_saf_delete_responsibility.setEnabled(True)
+        self.ui.button_saf_cancel_responsibility.setEnabled(True)
+
+        self.ui.lineedit_second_responsibility.setText(list_second_responsibility[pos_resp].description)
+        self.ui.list_second_safety_constraints.clear()
+
+        for pos in range(len(list_second_responsibility_ssc)):
+            text = ""
+            for haz in list_second_responsibility_ssc[pos].list_of_hazards:
+                text += "[H-" + str(haz.id_haz_screen) + "] "
+
+            item = QtWidgets.QListWidgetItem(
+                "SSC-" + str(list_second_responsibility_ssc[pos].id_safety_constraint) + ": " +
+                list_second_responsibility_ssc[pos].description + " " + text)
+            self.ui.list_second_safety_constraints.addItem(item)
+
+            for ssc in list_second_responsibility[pos_resp].list_of_ssc:
+                if ssc.id_constraint == list_second_responsibility_ssc[pos].id:
+                    self.ui.list_second_safety_constraints.item(pos).setSelected(True)
+
+    def clear_new_responsibility(self):
+        self.ui.lineedit_second_responsibility.setText("")
+        self.ui.list_second_safety_constraints.clearSelection()
+        self.ui.list_second_safety_constraints.selectionModel().clear()
+        self.ui.list_second_responsibility.clearSelection()
+        self.ui.list_second_responsibility.selectionModel().clear()
+
+        self.ui.button_saf_new_responsibility.setEnabled(True)
+        self.ui.button_saf_update_responsibility.setEnabled(False)
+        self.ui.button_saf_delete_responsibility.setEnabled(False)
+        self.ui.button_saf_cancel_responsibility.setEnabled(False)
+
+    def on_button_saf_cancel_responsibility_clicked(self):
+        self.ui.button_saf_new_responsibility.setEnabled(True)
+        self.ui.button_saf_update_responsibility.setEnabled(False)
+        self.ui.button_saf_delete_responsibility.setEnabled(False)
+        self.ui.button_saf_cancel_responsibility.setEnabled(False)
+
+        self.ui.lineedit_second_responsibility.setText("")
+        self.ui.list_second_responsibility.clearSelection()
+        self.ui.list_second_responsibility.selectionModel().clear()
+        self.ui.list_second_safety_constraints.clearSelection()
+        self.ui.list_second_safety_constraints.selectionModel().clear()
+
+        self.load_responsibilities()
+
+    def on_button_saf_update_reponsability_clicked(self):
+        global id_project, list_second_responsbility
+
+        description = self.ui.lineedit_second_responsibility.text()
+        if len(description) <= 0:
+            showdialog("Error on save", "Fill the field with description")
+        # elif len(self.ui.list_second_safety_constraints.selectedItems()) == 0:
+        #     showdialog("Error on save", "Select at least one Hazard")
+        else:
+            pos = self.ui.list_second_responsibility.currentRow()
+
+            resp = list_second_responsibility[pos]
+            resp.description = description
+
+            selected_ssc = []
+            for item in self.ui.list_second_safety_constraints.selectedItems():
+                ssc_id = list_second_responsibility_ssc[self.ui.list_second_safety_constraints.row(item)].id
+                selected_ssc.append(Responsibility_ssc(0, 0, ssc_id))
+
+            resp.list_of_ssc = selected_ssc
+            DB_Responsibility.update_responsibility(resp)
+
+            self.clear_new_responsibility()
+            self.load_responsibilities()
+            self.clear_new_responsibility()
+
+    def on_button_saf_delete_reponsability_clicked(self):
+        global id_project, list_second_responsibility
+
+        pos = self.ui.list_second_responsibility.currentRow()
+        if pos < 0:
+            return
+
+        resp = list_second_responsibility[pos]
+
+        msgBox = QMessageBox()
+        msgBox.setIcon(QMessageBox.Information)
+        msgBox.setText("Are you sure that you want delete the responsibility: " + str(resp.description) + "?")
+        msgBox.setWindowTitle("Delete Responsibility")
+        msgBox.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+        returnValue = msgBox.exec()
+        if returnValue == QMessageBox.Ok:
+            DB_Responsibility.delete_responsibility(resp)
+            self.clear_new_responsibility()
+            self.load_responsibilities()
+            self.clear_new_responsibility()
+
     def disable_new_control_action(self):
         self.ui.button_add_control_action.setEnabled(False)
         self.ui.button_update_control_action.setEnabled(True)
@@ -3251,6 +3490,7 @@ class MainWindow:
         self.load_component_controller_variables()
         self.disable_edit_controller_variable()
         self.disable_edit_control_action()
+        self.load_responsibilities()
 
     def on_button_add_control_action_clicked(self):
         global id_project, list_control_actions, list_component_controller, list_links_actions_controller
@@ -4641,6 +4881,14 @@ class MainWindow:
         if warning != "" and w_var != "":
             warning += "\n"
         warning += w_var
+
+        list_responsibilities_without_ssc = DB_Responsibility.check_control_structure(id_project)
+
+        if len(list_responsibilities_without_ssc) > 0:
+            warning += "Responsibilities without SSC\n"
+
+            for resp in list_responsibilities_without_ssc:
+                warning += "\t" + resp + "\n"
 
         if warning == "":
             self.ui.label_structure_warnings.setText("No warnings detected")

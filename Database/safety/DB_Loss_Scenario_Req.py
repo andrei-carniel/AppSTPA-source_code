@@ -43,11 +43,11 @@ def insert(req):
     # create a database connection
     conn = create_connection()
     with conn:
-        sql = "INSERT INTO saf_loss_scenario_req (id_controller, id_uca, id_project, id_comp_cause, id_comp_src, id_comp_dst, requirement, cause, mechanism) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        sql = "INSERT INTO saf_loss_scenario_req (id_controller, id_uca, id_project, id_comp_cause, id_comp_src, id_comp_dst, requirement, cause, mechanism, classification) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         cur = conn.cursor()
         aux_cause = " ".join(req.cause.split())
         aux_recommendation = " ".join(req.requirement.split())
-        task = (req.id_controller, req.id_uca, req.id_project, req.id_comp_cause, req.id_comp_src, req.id_comp_dst, aux_recommendation, aux_cause, req.mechanism)
+        task = (req.id_controller, req.id_uca, req.id_project, req.id_comp_cause, req.id_comp_src, req.id_comp_dst, aux_recommendation, aux_cause, req.mechanism, req.classification)
         cur.execute(sql, task)
         conn.commit()
         return cur.lastrowid
@@ -71,7 +71,6 @@ def delete_by_id(req_id):
     conn = create_connection()
     with conn:
         cur = conn.cursor()
-        # cur.execute("DELETE FROM pef_saf_res_requirement WHERE id_saf_requirement = ?", (req_id,))
         cur.execute("DELETE FROM saf_loss_scenario_req WHERE id = ?", (req_id,))
         conn.commit()
         return cur.lastrowid
@@ -85,7 +84,7 @@ def select_all_requirements_by_project_uca(id_project, id_uca):
         cur = conn.cursor()
         # cur.execute("SELECT * FROM saf_loss_scenario_req WHERE id_project = ? AND id_uca = ?", (id_project, id_uca,))
         cur.execute("SELECT lsr.id, lsr.id_controller, lsr.id_uca, lsr.id_project, lsr.id_comp_cause, lsr.id_comp_src, lsr.id_comp_dst, lsr.requirement, "
-                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name, lsr.performance_req "
+                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name, lsr.performance_req, lsr.classification "
                     "FROM saf_loss_scenario_req AS lsr "
                     "JOIN components AS cs ON cs.id = lsr.id_comp_src "
                     "JOIN components AS cd ON cd.id = lsr.id_comp_dst "
@@ -95,7 +94,7 @@ def select_all_requirements_by_project_uca(id_project, id_uca):
         rows = cur.fetchall()
 
         for row in rows:
-            result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13]))
+            result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14]))
 
     return result_list
 
@@ -108,7 +107,7 @@ def select_requirements_by_controller_uca(id_controller, id_uca):
         cur = conn.cursor()
 
         sql = "SELECT DISTINCT lsr.id, lsr.id_controller, lsr.id_uca, lsr.id_project, lsr.id_comp_cause, lsr.id_comp_src, lsr.id_comp_dst, lsr.requirement, " \
-                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name, lsr.performance_req " \
+                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name, lsr.performance_req, lsr.classification " \
                     "FROM saf_loss_scenario_req AS lsr " \
                     "JOIN components AS cs ON cs.id = lsr.id_comp_src " \
                     "JOIN components AS cd ON cd.id = lsr.id_comp_dst " \
@@ -128,46 +127,10 @@ def select_requirements_by_controller_uca(id_controller, id_uca):
         rows = cur.fetchall()
 
         for row in rows:
-            result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13]))
+            result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14]))
 
     return result_list
 
-def select_requirements_by_controller_resource(id_controller, id_resource):
-    result_list = []
-
-    # create a database connection
-    conn = create_connection()
-    with conn:
-        cur = conn.cursor()
-
-        sql = "SELECT DISTINCT lsr.id, lsr.id_controller, lsr.id_uca, lsr.id_project, lsr.id_comp_cause, lsr.id_comp_src, lsr.id_comp_dst, lsr.requirement, " \
-                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name, lsr.performance_req " \
-                    "FROM saf_loss_scenario_req AS lsr " \
-                    "JOIN components AS cs ON cs.id = lsr.id_comp_src " \
-                    "JOIN components AS cd ON cd.id = lsr.id_comp_dst " \
-                    "JOIN components AS cc ON cc.id = lsr.id_comp_cause " \
-					"JOIN saf_uca AS sf ON sf.id = lsr.id_uca " \
-                    "WHERE lsr.id_controller = ?"
-
-        # cur.execute("SELECT id from components WHERE comp_father = ?", (id_controller,))
-        # rows_comp = cur.fetchall()
-        #
-        # for r in rows_comp:
-        #     sql += " OR lsr.id_comp_cause = " + str(r[0])
-
-        cur.execute(sql, (id_controller,))
-        rows = cur.fetchall()
-
-        # for row in rows:
-        #     cur.execute("SELECT count(id) FROM pef_saf_res_requirement WHERE id_saf_requirement = ? AND id_resource = ?", (row[0], id_resource))
-        #     row_count = cur.fetchone()
-        #
-        #     if row_count != None:
-        #         if row_count[0] > 0:
-        #             result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13],
-        #                                                  DB_Saf_Pef_Requirement.select_by_requirement_without_connection(cur, row[0], id_resource)))
-
-    return result_list
 
 def select_id_requirement_by_uca(id_uca):
     result_list = []
@@ -194,7 +157,7 @@ def select_all(id_project):
         cur = conn.cursor()
         # cur.execute("SELECT * FROM saf_loss_scenario_req WHERE id_project = ? AND id_uca = ?", (id_project, id_uca,))
         cur.execute("SELECT lsr.id, lsr.id_controller, lsr.id_uca, lsr.id_project, lsr.id_comp_cause, lsr.id_comp_src, lsr.id_comp_dst, lsr.requirement, "
-                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name , lsr.performance_req "
+                    "lsr.cause, lsr.mechanism, cs.name, cd.name, cc.name , lsr.performance_req, lsr.classification "
                     "FROM saf_loss_scenario_req AS lsr "
                     "JOIN components AS cs ON cs.id = lsr.id_comp_src "
                     "JOIN components AS cd ON cd.id = lsr.id_comp_dst "
@@ -204,6 +167,6 @@ def select_all(id_project):
         rows = cur.fetchall()
 
         for row in rows:
-            result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13]))
+            result_list.append(Loss_Scenario_Req(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13], row[14]))
 
     return result_list

@@ -1,7 +1,7 @@
 class Loss_Scenario_Req:
 
     def __init__(self, id, id_controller, id_uca, id_project, id_comp_cause, id_comp_src, id_comp_dst, requirement, cause, mechanism = "",
-                 name_src = "", name_dst = "", name_cause = "", performance_req = "", list_res = []):
+                 name_src = "", name_dst = "", name_cause = "", performance_req = "", classification = "", list_res = []):
         self.id = id
         self.id_controller = id_controller
         self.id_uca = id_uca
@@ -16,4 +16,5 @@ class Loss_Scenario_Req:
         self.name_dst = name_dst
         self.name_cause = name_cause
         self.performance_req = performance_req
+        self.classification = classification
         self.list_res = list_res

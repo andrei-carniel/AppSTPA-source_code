@@ -107,11 +107,12 @@ def delete_safety_constraints(ssc):
         cur = conn.cursor()
         cur.execute("DELETE FROM safety_constraints WHERE id = ?", (ssc.id,))
         conn.commit()
-        delete_constrain_hazard(ssc)
+        delete_constraint_hazard(ssc)
+        update_constraint_id(ssc.id_project)
         return cur.lastrowid
 
 
-def delete_constrain_hazard(ssc):
+def delete_constraint_hazard(ssc):
     # create a database connection
     conn = create_connection()
     with conn:
@@ -119,6 +120,19 @@ def delete_constrain_hazard(ssc):
         cur.execute("DELETE FROM safety_constraints_hazards WHERE id_constraint = ?", (ssc.id,))
         conn.commit()
         return cur.lastrowid
+
+def update_constraint_id(id_project):
+    # create a database connection
+    conn = create_connection()
+    with conn:
+        cur = conn.cursor()
+        cur.execute("SELECT id FROM safety_constraints WHERE id_project = ?", (id_project,))
+        rows = cur.fetchall()
+        count = 1
+        for row in rows:
+            cur.execute("UPDATE safety_constraints SET id_safety_constraint = ? WHERE id = ?", (count, row[0],))
+            count += 1
+        conn.commit()
 
 # select all hazards by id_project
 def select_all_safety_constraints_by_project(id_project):

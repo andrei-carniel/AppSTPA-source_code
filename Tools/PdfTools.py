@@ -3,10 +3,12 @@ from datetime import datetime
 import Constant
 from Database import DB
 from Database.safety import DB_Loss_Scenario_Req, DB_Hazards, DB_Components_Links, DB_Components, DB_Losses, \
-    DB_Safety_Constraints, DB_Variables, DB_Projects, DB_Goals, DB_Actions_Components, DB_Assumptions, DB_UCA
+    DB_Safety_Constraints, DB_Variables, DB_Projects, DB_Goals, DB_Actions_Components, DB_Assumptions, DB_UCA, \
+    DB_Responsibility, DB_Project_Files
 # from dist.app.reportlab.platypus import Paragraph
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Spacer, Paragraph
+from reportlab.platypus import SimpleDocTemplate, Spacer, Paragraph, Image
+from reportlab.lib import utils
 
 pdf_report_list = []
 
@@ -53,6 +55,23 @@ def get_label_11_text(text):
     ptext = '<font size="11">&nbsp;&nbsp;&nbsp;' + text + '</font>'
     pdf_report_list.append(Paragraph(ptext))
     pdf_report_list.append(Spacer(1, 12))
+
+def get_image(path):
+    global pdf_report_list
+    width = 400
+
+    try:
+        img = utils.ImageReader(path)
+        iw, ih = img.getSize()
+        aspect = ih / float(iw)
+        f_image = Image(path, width=width, height=(width * aspect))
+        pdf_report_list.append(f_image)
+        pdf_report_list.append(Spacer(1, 12))
+    except Exception as e:
+        print(e)
+        ptext = '<font size="11">&nbsp;&nbsp;&nbsp; Error to load image</font>'
+        pdf_report_list.append(Paragraph(ptext))
+        pdf_report_list.append(Spacer(1, 12))
 
 def load_STPA_report(id_project, current_date):
     global pdf_report_list
@@ -175,16 +194,47 @@ def load_STPA_report(id_project, current_date):
             spacer = " in "
 
         get_label_11_text("R-" + str(count_ls) + " (" + rec.name_src + spacer + rec.name_dst + "): UCA-" + str(get_number_uca(rec.id_uca, list_aux_uca)))
+        get_label_11_text("Type: " + rec.classification)
         get_label_11_text("Cause: " + rec.cause)
         get_label_11_text("Recommendation: " + rec.requirement)
         get_label_11_text("Mechanism: " + rec.mechanism)
         get_label_11_text("")
 
     # report
-    get_label_14_title("\nLink Report")
+    get_label_14_title("\nLink with energy")
     list_omitted_links = DB_Components_Links.select_omitted_links(id_project)
     for omt in list_omitted_links:
         get_label_11_text(omt)
+
+    get_label_14_title("\nShow control structure images")
+    has_image = False
+
+    try:
+        path_one = DB_Project_Files.select_images_by_project(id_project, 1)
+        if path_one != "":
+            get_image(path_one)
+            has_image = True
+    except NameError as e:
+        print(e)
+
+    try:
+        path_two = DB_Project_Files.select_images_by_project(id_project, 2)
+        if path_two != "":
+            get_image(path_two)
+            has_image = True
+    except NameError as e:
+        print(e)
+
+    try:
+        path_three = DB_Project_Files.select_images_by_project(id_project, 3)
+        if path_three != "":
+            get_image(path_three)
+            has_image = True
+    except NameError as e:
+        print(e)
+
+    if not has_image:
+        get_label_12_text("No control structure images found.")
 
 def get_number_uca(id_uca, list_aux_uca):
     count = 1
@@ -215,6 +265,21 @@ def get_component_report(id_project, list_of_components, id_comp):
             aux_name += " (external of analysis)"
 
         get_label_12_bold_subtitle(aux_name)
+
+        if (id_comp == Constant.DB_ID_CONTROLLER):
+            get_label_12_text("Responsibilities: ")
+
+            list_responsibility = DB_Responsibility.select_all_responsibilities_by_controller(comp.id)
+
+            for pos in range(len(list_responsibility)):
+
+                text = ""
+                for ssc in list_responsibility[pos].list_of_ssc:
+                    text += "[SSC-" + str(ssc.id_constraint_screen) + "] "
+
+                get_label_11_text(
+                    "    R-" + str(list_responsibility[pos].id_screen) + ": " + str(
+                        list_responsibility[pos].description + ". " + text))
 
         get_label_12_text("Outgoing connections")
         for link in DB_Components_Links.select_component_links_by_project_and_component(comp.id, True):

@@ -5,7 +5,7 @@ import Constant
 
 from Database.safety import DB_Loss_Scenario_Req, DB_Hazards, DB_Components_Links, DB_Actions, DB_Components, DB_Losses, \
     DB_Safety_Constraints, DB_Projects, DB_Goals, DB_Actions_Components, DB_Assumptions, DB_UCA, DB_Project_Files, \
-    DB_Saf_Priority
+    DB_Saf_Priority, DB_Responsibility
 from Objects.Thing import Thing
 
 
@@ -95,6 +95,10 @@ def create_all_tables():
         alter_table(conn, "ALTER TABLE saf_loss_scenario_req ADD COLUMN mechanism TEXT DEFAULT '';")
 
         alter_table(conn, "ALTER TABLE saf_loss_scenario_req ADD COLUMN performance_req TEXT DEFAULT ''")
+        alter_table(conn, "ALTER TABLE saf_loss_scenario_req ADD COLUMN classification TEXT DEFAULT ''")
+
+        create_table(conn, DB_Responsibility.create_table_responsibility())
+        create_table(conn, DB_Responsibility.create_table_responsibility_ssc())
 
     else:
         print("Error! cannot create the database connection.")

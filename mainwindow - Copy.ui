@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1186</width>
-    <height>685</height>
+    <height>697</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -729,11 +729,11 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1125</width>
-             <height>2718</height>
+             <width>813</width>
+             <height>2418</height>
             </rect>
            </property>
-           <layout class="QGridLayout" name="gridLayout_21">
+           <layout class="QGridLayout" name="gridLayout_47">
             <item row="0" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_35">
               <item>
@@ -3390,13 +3390,13 @@ QGroupBox::title {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>760</height>
+                <height>460</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>760</height>
+                <height>460</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -3418,862 +3418,672 @@ QGroupBox::title {
               </property>
               <layout class="QGridLayout" name="gridLayout_9">
                <item row="0" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_55">
-                 <property name="topMargin">
-                  <number>10</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_36">
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>13</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Controller:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="combobox_second_controller">
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="1" column="0">
                 <layout class="QVBoxLayout" name="verticalLayout_39">
-                 <property name="topMargin">
-                  <number>10</number>
-                 </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_131">
-                   <item>
-                    <widget class="QLabel" name="label_saf_constraint_position_2">
-                     <property name="minimumSize">
-                      <size>
-                       <width>165</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>165</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Controller responsibilitiy:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineedit_second_responsibility"/>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_132">
-                   <item>
-                    <widget class="QLabel" name="label_70">
-                     <property name="minimumSize">
-                      <size>
-                       <width>165</width>
-                       <height>0</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>165</width>
-                       <height>90</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>List of safety
-constraints:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QListWidget" name="list_second_safety_constraints">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>90</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="alternatingRowColors">
-                      <bool>true</bool>
-                     </property>
-                     <property name="selectionMode">
-                      <enum>QAbstractItemView::MultiSelection</enum>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_130">
-                   <item>
-                    <widget class="QPushButton" name="button_saf_new_responsibility">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Add responsibility</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_saf_update_responsibility">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Update responsibility</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_saf_delete_responsibility">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Delete responsibility</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_saf_cancel_responsibility">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Cancel responsibility edition</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_73">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>13</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>List of responsibilities:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QListWidget" name="list_second_responsibility">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>90</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>90</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>11</pointsize>
-                    </font>
-                   </property>
-                   <property name="alternatingRowColors">
-                    <bool>true</bool>
-                   </property>
-                   <property name="wordWrap">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="2" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_71">
-                 <property name="topMargin">
-                  <number>6</number>
-                 </property>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_25">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_55">
                    <property name="topMargin">
                     <number>10</number>
                    </property>
-                   <property name="rightMargin">
-                    <number>6</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>4</number>
-                   </property>
                    <item>
-                    <widget class="QLabel" name="label_19">
+                    <widget class="QLabel" name="label_36">
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
                      <property name="font">
                       <font>
                        <pointsize>13</pointsize>
                       </font>
                      </property>
                      <property name="text">
-                      <string>Sends control actions</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                      <string>Controller:</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="label_16">
+                    <widget class="QComboBox" name="combobox_second_controller">
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
                       </font>
                      </property>
-                     <property name="text">
-                      <string>Name:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineedit_name_control_action">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_26">
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_2">
-                       <item>
-                        <widget class="QPushButton" name="button_add_control_action">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Add</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="button_update_control_action">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Update</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="button_delete_control_action">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Delete</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="button_cancel_control_action">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Cancel edition</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_24">
-                       <property name="leftMargin">
-                        <number>5</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>5</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>5</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_58">
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Present in Link</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QListWidget" name="listwidget_second_links_act">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>120</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>120</height>
-                          </size>
-                         </property>
-                         <property name="alternatingRowColors">
-                          <bool>true</bool>
-                         </property>
-                         <property name="selectionMode">
-                          <enum>QAbstractItemView::MultiSelection</enum>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <widget class="QListWidget" name="listwidget_control_actions">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>120</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>120</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="alternatingRowColors">
-                      <bool>true</bool>
+                     <property name="focusPolicy">
+                      <enum>Qt::StrongFocus</enum>
                      </property>
                     </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_14">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_71">
                    <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
                     <number>6</number>
                    </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
                    <item>
-                    <widget class="QLabel" name="label_67">
-                     <property name="font">
-                      <font>
-                       <pointsize>13</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Receives variables 
-(feeback, control action and external communication)</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_68">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Name:</string>
-                     </property>
-                     <property name="margin">
+                    <layout class="QVBoxLayout" name="verticalLayout_25">
+                     <property name="leftMargin">
                       <number>0</number>
                      </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineedit_name_controller_variable">
-                     <property name="enabled">
-                      <bool>false</bool>
+                     <property name="topMargin">
+                      <number>10</number>
                      </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
+                     <property name="rightMargin">
+                      <number>6</number>
                      </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                     <property name="bottomMargin">
+                      <number>4</number>
+                     </property>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_37">
+                      <widget class="QLabel" name="label_19">
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Sends control actions</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_16">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Name:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="lineedit_name_control_action">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_26">
                        <item>
-                        <widget class="QPushButton" name="button_add_controller_variable">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Add</string>
-                         </property>
-                        </widget>
+                        <layout class="QVBoxLayout" name="verticalLayout_2">
+                         <item>
+                          <widget class="QPushButton" name="button_add_control_action">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Add</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="button_update_control_action">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Update</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="button_delete_control_action">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Delete</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="button_cancel_control_action">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Cancel edition</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="button_update_controller_variable">
-                         <property name="enabled">
-                          <bool>false</bool>
+                        <layout class="QVBoxLayout" name="verticalLayout_24">
+                         <property name="leftMargin">
+                          <number>5</number>
                          </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
+                         <property name="topMargin">
+                          <number>5</number>
                          </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
+                         <property name="rightMargin">
+                          <number>5</number>
                          </property>
-                         <property name="text">
-                          <string>Update</string>
+                         <property name="bottomMargin">
+                          <number>0</number>
                          </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="button_delete_controller_variable">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Delete</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="button_cancel_controller_variable">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Cancel edition</string>
-                         </property>
-                        </widget>
+                         <item>
+                          <widget class="QLabel" name="label_58">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Present in Link</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QListWidget" name="listwidget_second_links_act">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>50</width>
+                             <height>120</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>120</height>
+                            </size>
+                           </property>
+                           <property name="alternatingRowColors">
+                            <bool>true</bool>
+                           </property>
+                           <property name="selectionMode">
+                            <enum>QAbstractItemView::MultiSelection</enum>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
                        </item>
                       </layout>
                      </item>
                      <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_38">
-                       <property name="leftMargin">
-                        <number>5</number>
+                      <widget class="QListWidget" name="listwidget_control_actions">
+                       <property name="enabled">
+                        <bool>false</bool>
                        </property>
-                       <property name="topMargin">
-                        <number>5</number>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>120</height>
+                        </size>
                        </property>
-                       <property name="rightMargin">
-                        <number>5</number>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>120</height>
+                        </size>
                        </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
                        </property>
-                       <item>
-                        <widget class="QLabel" name="label_69">
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Present in Link</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QListWidget" name="listwidget_second_links_var">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>120</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>120</height>
-                          </size>
-                         </property>
-                         <property name="alternatingRowColors">
-                          <bool>true</bool>
-                         </property>
-                         <property name="selectionMode">
-                          <enum>QAbstractItemView::MultiSelection</enum>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
                      </item>
                     </layout>
                    </item>
                    <item>
-                    <widget class="QListWidget" name="listwidget_controller_variable">
-                     <property name="enabled">
-                      <bool>false</bool>
+                    <layout class="QVBoxLayout" name="verticalLayout_14">
+                     <property name="leftMargin">
+                      <number>0</number>
                      </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>120</height>
-                      </size>
+                     <property name="topMargin">
+                      <number>0</number>
                      </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>120</height>
-                      </size>
+                     <property name="rightMargin">
+                      <number>6</number>
                      </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
+                     <property name="bottomMargin">
+                      <number>0</number>
                      </property>
-                     <property name="alternatingRowColors">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
+                     <item>
+                      <widget class="QLabel" name="label_67">
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Receives variables 
+(feeback, control action and external communication)</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_68">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Name:</string>
+                       </property>
+                       <property name="margin">
+                        <number>0</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="lineedit_name_controller_variable">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_22">
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_37">
+                         <item>
+                          <widget class="QPushButton" name="button_add_controller_variable">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Add</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="button_update_controller_variable">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Update</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="button_delete_controller_variable">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Delete</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QPushButton" name="button_cancel_controller_variable">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>100</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Cancel edition</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_38">
+                         <property name="leftMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>5</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLabel" name="label_69">
+                           <property name="font">
+                            <font>
+                             <pointsize>11</pointsize>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Present in Link</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="QListWidget" name="listwidget_second_links_var">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>50</width>
+                             <height>120</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>120</height>
+                            </size>
+                           </property>
+                           <property name="alternatingRowColors">
+                            <bool>true</bool>
+                           </property>
+                           <property name="selectionMode">
+                            <enum>QAbstractItemView::MultiSelection</enum>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <widget class="QListWidget" name="listwidget_controller_variable">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>120</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>120</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_4">
-                   <property name="leftMargin">
-                    <number>6</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
                    <item>
-                    <widget class="QLabel" name="label_21">
-                     <property name="font">
-                      <font>
-                       <pointsize>13</pointsize>
-                      </font>
+                    <layout class="QVBoxLayout" name="verticalLayout_4">
+                     <property name="leftMargin">
+                      <number>6</number>
                      </property>
-                     <property name="text">
-                      <string>Values of Variable</string>
+                     <property name="topMargin">
+                      <number>0</number>
                      </property>
-                     <property name="alignment">
-                      <set>Qt::AlignCenter</set>
+                     <property name="rightMargin">
+                      <number>0</number>
                      </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_22">
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
+                     <property name="bottomMargin">
+                      <number>0</number>
                      </property>
-                     <property name="text">
-                      <string>Name:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLineEdit" name="lineedit_name_controller_variable_values">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_add_controller_variable_values">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Add</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_update_controller_variable_values">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Update</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_delete_controller_variable_values">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Delete</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="button_cancel_controller_variable_values">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Cancel edition</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QListWidget" name="listwidget_controller_variable_values">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>120</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>120</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="alternatingRowColors">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
+                     <item>
+                      <widget class="QLabel" name="label_21">
+                       <property name="font">
+                        <font>
+                         <pointsize>13</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Values of Variable</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_22">
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Name:</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="lineedit_name_controller_variable_values">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="button_add_controller_variable_values">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Add</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="button_update_controller_variable_values">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Update</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="button_delete_controller_variable_values">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Delete</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="button_cancel_controller_variable_values">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="text">
+                        <string>Cancel edition</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QListWidget" name="listwidget_controller_variable_values">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>120</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>120</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <pointsize>11</pointsize>
+                        </font>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </item>
@@ -4410,7 +4220,7 @@ QGroupBox::title {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1125</width>
+             <width>799</width>
              <height>1682</height>
             </rect>
            </property>
@@ -4537,7 +4347,7 @@ QGroupBox::title {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>1087</width>
+                    <width>98</width>
                     <height>148</height>
                    </rect>
                   </property>
@@ -4684,7 +4494,7 @@ QGroupBox::title {
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>545</width>
+                       <width>98</width>
                        <height>78</height>
                       </rect>
                      </property>
@@ -4871,7 +4681,7 @@ QGroupBox::title {
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>544</width>
+                       <width>98</width>
                        <height>78</height>
                       </rect>
                      </property>
@@ -4992,8 +4802,8 @@ QGroupBox::title {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>549</width>
-                     <height>374</height>
+                     <width>100</width>
+                     <height>30</height>
                     </rect>
                    </property>
                   </widget>
@@ -5091,7 +4901,7 @@ QGroupBox::title {
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>544</width>
+                       <width>98</width>
                        <height>78</height>
                       </rect>
                      </property>
@@ -5540,13 +5350,13 @@ QGroupBox::title {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1125</width>
-             <height>1232</height>
+             <width>1095</width>
+             <height>1138</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_16">
             <item row="0" column="0">
-             <layout class="QVBoxLayout" name="verticalLayout_15">
+             <layout class="QVBoxLayout" name="verticalLayout_71">
               <item>
                <widget class="QGroupBox" name="groupBox_6">
                 <property name="styleSheet">
@@ -5568,192 +5378,145 @@ QGroupBox::title {
                 </property>
                 <layout class="QGridLayout" name="gridLayout_14">
                  <item row="0" column="0">
-                  <layout class="QHBoxLayout" name="horizontalLayout_34">
+                  <layout class="QHBoxLayout" name="horizontalLayout_64">
+                   <property name="topMargin">
+                    <number>6</number>
+                   </property>
                    <item>
-                    <layout class="QVBoxLayout" name="verticalLayout_11">
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_64">
-                       <property name="topMargin">
-                        <number>6</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_31">
-                         <property name="minimumSize">
-                          <size>
-                           <width>130</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>130</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Controller</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QComboBox" name="combobox_fourth_controller">
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::StrongFocus</enum>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_63">
-                       <property name="topMargin">
-                        <number>6</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_12">
-                         <property name="minimumSize">
-                          <size>
-                           <width>130</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>130</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Control Action</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QComboBox" name="combobox_fourth_control_action">
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::StrongFocus</enum>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_75">
-                       <property name="topMargin">
-                        <number>6</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_33">
-                         <property name="minimumSize">
-                          <size>
-                           <width>150</width>
-                           <height>0</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>11</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Unsafe Control Action
-(select the UCA to create/manage the recommendations)</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QListWidget" name="listwidget_fourth_uca">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>150</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="alternatingRowColors">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                    <widget class="QLabel" name="label_31">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>130</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Controller</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
-                    <layout class="QVBoxLayout" name="verticalLayout_61">
-                     <item>
-                      <widget class="QLabel" name="label_fourth_loss_img">
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>Loss scenario image</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QLabel" name="label_55">
-                       <property name="font">
-                        <font>
-                         <pointsize>12</pointsize>
-                        </font>
-                       </property>
-                       <property name="text">
-                        <string>Adapted from STPA Handbook, of Nancy G. Leveson and John P. Thomas</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
+                    <widget class="QComboBox" name="combobox_fourth_controller">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::StrongFocus</enum>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
                  <item row="1" column="0">
+                  <layout class="QHBoxLayout" name="horizontalLayout_63">
+                   <property name="topMargin">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="label_12">
+                     <property name="minimumSize">
+                      <size>
+                       <width>130</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>130</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Control Action</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="combobox_fourth_control_action">
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::StrongFocus</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="2" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_75">
+                   <property name="topMargin">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="label_33">
+                     <property name="minimumSize">
+                      <size>
+                       <width>150</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Unsafe Control Action (select the UCA to create/manage the recommendations)</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QListWidget" name="listwidget_fourth_uca">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>80</height>
+                      </size>
+                     </property>
+                     <property name="alternatingRowColors">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="3" column="0">
                   <layout class="QHBoxLayout" name="horizontalLayout_107">
                    <property name="topMargin">
                     <number>6</number>
@@ -6136,27 +5899,25 @@ QGroupBox::title {
                </widget>
               </item>
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_13">
-                <item>
-                 <spacer name="verticalSpacer_41">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Maximum</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QGroupBox" name="groupBox_8">
-                  <property name="styleSheet">
-                   <string notr="true">QGroupBox {
+               <spacer name="verticalSpacer_41">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Maximum</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>25</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_8">
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox {
     border: 1px solid black;
     border-radius: 9px;
     margin-top: 0.5em;
@@ -6168,60 +5929,58 @@ QGroupBox::title {
     left: 10px;
     padding: 0 3px 0 3px;
 }</string>
-                  </property>
-                  <property name="title">
-                   <string>Recommendation  List </string>
-                  </property>
-                  <layout class="QGridLayout" name="gridLayout_15">
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_64">
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>* Click on the recommendation to update or delete</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QListWidget" name="listwidget_fourth_requirement">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>400</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>11</pointsize>
-                      </font>
-                     </property>
-                     <property name="horizontalScrollBarPolicy">
-                      <enum>Qt::ScrollBarAsNeeded</enum>
-                     </property>
-                     <property name="alternatingRowColors">
-                      <bool>true</bool>
-                     </property>
-                     <property name="wordWrap">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
+                </property>
+                <property name="title">
+                 <string>Recommendation  List </string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_15">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_64">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>* Click on the recommendation to update or delete</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QListWidget" name="listwidget_fourth_requirement">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>400</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="horizontalScrollBarPolicy">
+                    <enum>Qt::ScrollBarAsNeeded</enum>
+                   </property>
+                   <property name="alternatingRowColors">
+                    <bool>true</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
               </item>
              </layout>
             </item>
@@ -6249,8 +6008,8 @@ QGroupBox::title {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1142</width>
-             <height>503</height>
+             <width>316</width>
+             <height>348</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_56">
@@ -6558,8 +6317,8 @@ QGroupBox::title {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1142</width>
-             <height>469</height>
+             <width>98</width>
+             <height>28</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_19"/>

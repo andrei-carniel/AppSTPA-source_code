@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 
 import Constant
-from Database.safety import DB_Components_Links, DB_Variables, DB_Actions_Components
+from Database.safety import DB_Components_Links, DB_Variables, DB_Actions_Components, DB_Responsibility
 from Objects.Component import Component, Component_small
 
 
@@ -193,6 +193,7 @@ def delete_controller(comp):
         DB_Actions_Components.delete_by_controller(comp.id)
         DB_Variables.delete_by_component(comp.id)
         DB_Components_Links.delete_by_src_dst(comp.id)
+        DB_Responsibility.delete_responsibility_by_controller(comp.id)
         return cur.lastrowid
 
 def delete_controller_ext_comp(ext_id):

@@ -11,7 +11,7 @@ class Loss:
 
 class Loss_Scenery:
 
-    def __init__(self, side, onto_name, component, causes, requirement, id_controller, id_component, id_component_src, id_component_dst, name_src = "", name_dst = "", mechanism = ""):
+    def __init__(self, side, onto_name, component, causes, requirement, id_controller, id_component, id_component_src, id_component_dst, name_src = "", name_dst = "", mechanism = "", classification = ""):
         self.side = side
         self.onto_name = onto_name
         self.component = component
@@ -24,3 +24,4 @@ class Loss_Scenery:
         self.name_src = name_src
         self.name_dst = name_dst
         self.mechanism = mechanism
+        self.classification = classification

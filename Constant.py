@@ -15,8 +15,9 @@ FILES_REPO = "Files"
 DB_FILE = "Database/Ontology_DB.db"  # Database path
 GIF_LOADING_PATH = "Images/Loading_Gear_400px.gif"
 DEFAULT_IMAGE_PATH = "Images/image.png"
+IMAGE_STPA_LOSS = "Images/new_loss_scenarios_division.png"
 PATH_REPORT = "Reports\\"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 # Java complete path
 #JAVA_PATH = "C:\\Program Files\\Java\\jre1.8.0_281\\bin\\java.exe"
@@ -126,6 +127,11 @@ UCA_RULE = "rule"
 UCA_CELL = "cell"
 CONTEXT = "Context"
 HAZARDS = "Hazard"
+
+STPA_UNSAFE_CONTROLLER_BEHAVIOR = "Unsafe controller behavior"
+STPA_INADEQUATE_FEEDBACK = "Causes of inadequate feedback/information"
+STPA_CONTROL_PATH = "Control path"
+STPA_OTHER_FACTORS = "Other factors related to the controlled process"
 
 DB_ID_EXTERNAL_ENTITY = 1
 DB_ID_DATA_FLOW = 2
