@@ -436,17 +436,17 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
 
                 if obj.replace("-", " ") == "executed":
                     cause = actuator.name + " performs (" + obj.replace("-", " ") + ") a non-issued control action."
-                    req = "The " + actuator.name + " must be reliable and have periodic maintenance."
+                    req = "The " + actuator.name + " shall be reliable and have periodic maintenance."
                     result.append(Loss_Scenery(side, causal_factor_name, actuator.name, cause, req, controller.id, actuator.id, controller.id, actuator.id, controller.name, actuator.name, "", Constant.STPA_CONTROL_PATH))
 
                 if obj.replace("-", " ") == "not executed" and cp != None:
                     cause = actuator.name + " did not received the control action, from " + controller.name + ", or cannot act (" + obj.replace("-", " ") + ") in " + cp.name + "."
-                    req = "The " + actuator.name + " must be reliable and have periodic maintenance."
+                    req = "The " + actuator.name + " shall be reliable and have periodic maintenance."
                     result.append(Loss_Scenery(side, causal_factor_name, actuator.name, cause, req, controller.id, actuator.id, controller.id, actuator.id, controller.name, actuator.name, "", Constant.STPA_CONTROL_PATH))
 
                 if obj.replace("-", " ") == "failure":
                     cause = "The " + actuator.name + " does not perform its functions."
-                    req = "The " + actuator.name + " must have ongoing analysis after system modification."
+                    req = "The " + actuator.name + " shall have ongoing analysis after system modification."
                     result.append(Loss_Scenery(side, causal_factor_name, actuator.name, cause, req, controller.id, actuator.id, controller.id, actuator.id, controller.name, actuator.name, "", Constant.STPA_CONTROL_PATH))
 
         return result
@@ -458,19 +458,19 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
             for obj in object_property_list:
                 if obj.replace("-", " ") == "incorrect":
                     cause = "An incorrect " + alg.name + " was designed."
-                    req = "The " + alg.name + " must be revised AND tested when updated."
+                    req = "The " + alg.name + " shall be revised AND tested when updated."
                     result.append(Loss_Scenery(side, causal_factor_name + "/Logic", alg.name, cause, req, controller.id, alg.id, alg.id, controller.id, alg.name, controller.name, "", Constant.STPA_UNSAFE_CONTROLLER_BEHAVIOR))
 
 
                 if obj.replace("-", " ") == "ineffective":
                     cause = alg.name + " ineffective after process changes."
-                    req = "The " + alg.name + " must be updated AND revised AND tested."
+                    req = "The " + alg.name + " shall be updated AND revised AND tested."
                     result.append(Loss_Scenery(side, causal_factor_name + "/Logic", alg.name, cause, req, controller.id, alg.id, alg.id, controller.id, alg.name, controller.name, "", Constant.STPA_UNSAFE_CONTROLLER_BEHAVIOR))
 
 
                 if obj.replace("-", " ") == "updated":
                     cause = alg.name + " updated incorrectly."
-                    req = "The " + alg.name + " must be revised AND tested when updated."
+                    req = "The " + alg.name + " shall be revised AND tested when updated."
                     result.append(Loss_Scenery(side, causal_factor_name + "/Logic", alg.name, cause, req, controller.id, alg.id, alg.id, controller.id, alg.name, controller.name, "", Constant.STPA_UNSAFE_CONTROLLER_BEHAVIOR))
 
         return result
@@ -502,17 +502,17 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
 
                     if obj.replace("-", " ") == "missing" and cp != None:
                         cause = controller.name + " does not provide (" + obj.replace("-", " ") + ") control action: " + text + "; to " + actuator.name + "."
-                        req = "The process model in " + controller.name + " must represent the " + cp.name + "."
+                        req = "The process model in " + controller.name + " shall represent the " + cp.name + "."
                         result.append(Loss_Scenery(side, causal_factor_name, actuator.name, cause, req, controller.id, actuator.id, controller.id, actuator.id, controller.name, actuator.name, "", Constant.STPA_CONTROL_PATH))
 
                     if obj.replace("-", " ") == "missing":
                         cause = "The control action: " + text + " from " + controller.name + " to " + actuator.name + " is " + obj.replace("-"," ") + "."
-                        req = "The communication from " + controller.name + " to " + actuator.name + " must be improved."
+                        req = "The communication from " + controller.name + " to " + actuator.name + " shall be improved."
                         result.append(Loss_Scenery(side, causal_factor_name, actuator.name, cause, req, controller.id, actuator.id, controller.id, actuator.id, controller.name, actuator.name, "", Constant.STPA_CONTROL_PATH))
 
                     if obj.replace("-", " ") == "inappropriate" and cp != None:
                         cause = controller.name + " issued an incorrect (" + obj.replace("-", " ") + ") control action: " + text + "; to " + actuator.name + "."
-                        req = "The process model in " + controller.name + " must represent the " + cp.name + "."
+                        req = "The process model in " + controller.name + " shall represent the " + cp.name + "."
                         result.append(Loss_Scenery(side, causal_factor_name, actuator.name, cause, req, controller.id, actuator.id, controller.id, actuator.id, controller.name, actuator.name, "", Constant.STPA_CONTROL_PATH))
 
 
@@ -545,12 +545,12 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
 
                     if obj.replace("-", " ") == "missing" and cp != None:
                         cause = controller.name + " does not provide (" + obj.replace("-", " ") + ") the control action: " + text + "; to " + cp.name + "."
-                        req = "The process model in " + controller.name + " must represent the " + cp.name + "."
+                        req = "The process model in " + controller.name + " shall represent the " + cp.name + "."
                         result.append(Loss_Scenery(side, causal_factor_name, cp.name, cause, req, controller.id, cp.id, controller.id, cp.id, controller.name, cp.name, "", Constant.STPA_CONTROL_PATH))
 
                     if obj.replace("-", " ") == "inappropriate" and cp != None:
                         cause = controller.name + " issued an incorrect (" + obj.replace("-", " ") + ") control action: " + text + "; to " + cp.name + "."
-                        req = "The process model in " + controller.name + " must represent the " + cp.name + "."
+                        req = "The process model in " + controller.name + " shall represent the " + cp.name + "."
                         result.append(Loss_Scenery(side, causal_factor_name, cp.name, cause, req, controller.id, cp.id, controller.id, cp.id, controller.name, cp.name, "", Constant.STPA_CONTROL_PATH))
         return result
 
@@ -558,7 +558,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
         for obj in object_property_list:
             if obj.replace("-", " ") == "failure":
                 cause = "The " + controller.name + " controller does not perform its functions to send control actions or receive feedback."
-                req = "The " + controller.name + " must have ongoing analysis after system modification."
+                req = "The " + controller.name + " shall have ongoing analysis after system modification."
                 result.append(Loss_Scenery(side, causal_factor_name, controller.name, cause, req, controller.id, controller.id, controller.id, controller.id, controller.name, controller.name, "", Constant.STPA_UNSAFE_CONTROLLER_BEHAVIOR))
 
         return result
@@ -594,7 +594,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                     cause += "."
 
                 if obj.replace("-", " ") == "wrong" or obj.replace("-", " ") == "missing":
-                    req = "The communication of the external system to " + controller.name + " must be improved."
+                    req = "The communication of the external system to " + controller.name + " shall be improved."
                     result.append(Loss_Scenery(side, causal_factor_name, comp.name_src, cause, req, controller.id, comp.id_component_src, comp.id_component_src, controller.id, comp.name_src, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
 
@@ -609,7 +609,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                 for obj in object_property_list:
                     if obj.replace("-", " ") == "unidentified disturbance":
                         cause = cp.name + " affected by natural or man made disasters."
-                        req = "The " + cp.name + " must be resistant to disasters."
+                        req = "The " + cp.name + " shall be resistant to disasters."
                         result.append(Loss_Scenery(side, causal_factor_name, cp.name, cause, req, controller.id, env_dist.id, env_dist.id, cp.id, env_dist.name, cp.name, "", Constant.STPA_OTHER_FACTORS))
 
         return result
@@ -643,7 +643,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
 
                 if obj.replace("-", " ") == "delayed" and cp != None:
                         cause = "Temporary obstruction does not allow the reading of the " + cp.name + " by " + link2.name_dst + "."
-                        req = "The feedback from " + cp.name + " to " + link2.name_dst + " must have alternative link."
+                        req = "The feedback from " + cp.name + " to " + link2.name_dst + " shall have alternative link."
                         result.append(Loss_Scenery(side, causal_factor_name + " by " + cp.name, cp.name, cause, req, controller.id, cp.id, link2.id_component_src, link2.id_component_dst, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                 if (obj.replace("-", " ") == "inadequate" or obj.replace("-", " ") == "missing") and cp != None:
@@ -651,7 +651,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                         if text != "":
                             cause += " (" + text + ")"
                         cause += " is " + obj.replace("-", " ") + "."
-                        req = "The communication from " + cp.name + " to " + link2.name_dst + " must be improved."
+                        req = "The communication from " + cp.name + " to " + link2.name_dst + " shall be improved."
                         result.append(Loss_Scenery(side, causal_factor_name + " by " + cp.name, cp.name, cause, req, controller.id, cp.id, link2.id_component_src, link2.id_component_dst, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
         return result
@@ -685,7 +685,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                                 if text != "":
                                     cause += " (" + text + ")"
                                 cause += " from " + ctl.name + " to " + controller.name + " is delayed."
-                                req = "The feedback from " + ctl.name + " to " + controller.name + " must have alternative link."
+                                req = "The feedback from " + ctl.name + " to " + controller.name + " shall have alternative link."
                                 result.append(Loss_Scenery(side, causal_factor_name + " by " + ctl.name, ctl.name, cause, req, controller.id, ctl.id, ctl.id, controller.id, ctl.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                             elif obj.replace("-", " ") == "missing":
@@ -693,7 +693,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                                 if text != "":
                                     cause += " (" + text + ")"
                                 cause += " is " + obj.replace("-", " ") + "."
-                                req = "The communication from " + ctl.name + " to " + controller.name + " must be improved."
+                                req = "The communication from " + ctl.name + " to " + controller.name + " shall be improved."
                                 result.append(Loss_Scenery(side, causal_factor_name + " by " + ctl.name, ctl.name, cause, req, controller.id, ctl.id, ctl.id, controller.id, ctl.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
         return result
@@ -709,7 +709,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                     cause = "Current state of " + pm.name + " is " + obj.replace("-", " ") + "."
 
                     if obj.replace("-", " ") == "wrong":
-                        req = "The process model of " + controller.name + " must represent the " + cp.name + "."
+                        req = "The process model of " + controller.name + " shall represent the " + cp.name + "."
                         result.append(Loss_Scenery(side, causal_factor_name, pm.name, cause, req, controller.id, pm.id, pm.id, controller.id, pm.name, controller.name, "", Constant.STPA_UNSAFE_CONTROLLER_BEHAVIOR))
         return result
 
@@ -747,7 +747,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                     cause += " is " + obj.replace("-", " ") + "."
 
                     if (obj.replace("-", " ") == "missing" or obj.replace("-", " ") == "wrong") and cp != None:
-                        req = "The " + cp.name + " must support the input == " + input.name + "."
+                        req = "The " + cp.name + " shall support the input == " + input.name + "."
                         result.append(Loss_Scenery(side, causal_factor_name, input.name, cause, req, controller.id, input.id, input.id, cp.id, input.name, cp.name, "", Constant.STPA_OTHER_FACTORS))
 
         return result
@@ -782,27 +782,27 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                         result.append(Loss_Scenery(side, causal_factor_name, sensor.name, cause, req, controller.id, sensor.id, sensor.id, controller.id, sensor.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                     cause = "Feedback ("+ var_text +") delays between " + sensor.name + " and " + controller.name + "."
-                    req = "The communication of " + sensor.name + " to " + controller.name + " must be improved."
+                    req = "The communication of " + sensor.name + " to " + controller.name + " shall be improved."
                     result.append(Loss_Scenery(side, causal_factor_name, sensor.name, cause, req, controller.id, sensor.id, sensor.id, controller.id, sensor.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                 if obj.replace("-", " ") == "wrong" and cp != None:
                     cause = "Current state of the " + cp.name+ " cannot be read accurately by " + sensor.name + "."
-                    req = "The " + sensor.name + " must have accuracy == 0.0x."
+                    req = "The " + sensor.name + " shall have accuracy == 0.0x."
                     result.append(Loss_Scenery(side, causal_factor_name, sensor.name, cause, req, controller.id, sensor.id, sensor.id, controller.id, sensor.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                 if obj.replace("-", " ") == "missing":
                     if cp != None:
                         cause = "Feedback of " + sensor.name + " is missing (" + obj.replace("-", " ") + ")."
-                        req = "The " + sensor.name + " must be maintained when time of use == x."
+                        req = "The " + sensor.name + " shall be maintained when time of use == x."
                         result.append(Loss_Scenery(side, causal_factor_name, sensor.name, cause, req, controller.id, sensor.id, sensor.id, controller.id, sensor.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                     cause = "Feedback ("+ var_text +") lost or corrupted."
-                    req = "Communication of " + sensor.name + " to " + controller.name + " must be improved."
+                    req = "Communication of " + sensor.name + " to " + controller.name + " shall be improved."
                     result.append(Loss_Scenery(side, causal_factor_name, sensor.name, cause, req, controller.id, sensor.id, sensor.id, controller.id, sensor.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
                 if obj.replace("-", " ") == "failure" and cp != None:
                     cause = cp.name + " cannot be read (" + obj.replace("-", " ") + ") by the " + sensor.name + "."
-                    req = "The " + sensor.name + " must be maintained when time of use == x."
+                    req = "The " + sensor.name + " shall be maintained when time of use == x."
                     result.append(Loss_Scenery(side, causal_factor_name, sensor.name, cause, req, controller.id, sensor.id, sensor.id, controller.id, sensor.name, controller.name, "", Constant.STPA_INADEQUATE_FEEDBACK))
 
         return result
@@ -837,7 +837,7 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
                         cause = ctl.name + " issues a control action (" + text + ") that conflicts with the one provided by the " + controller.name + "."
 
                         if obj.replace("-", " ") == "conflicting":
-                            req = "The " + ctl.name + " must have conflict analysis for control actions."
+                            req = "The " + ctl.name + " shall have conflict analysis for control actions."
                             result.append(Loss_Scenery(side, causal_factor_name, ctl.name, cause, req, controller.id, ctl.id, ctl.id, cp.id, ctl.name, cp.name, "", Constant.STPA_CONTROL_PATH))
         return result
 
@@ -864,21 +864,21 @@ def get_causal_factor_list(causal_factor_name, id_project, controller, object_pr
 
                     if obj.replace("-", " ") == "inappropriate" and cp != None:
                         cause = controller.name + " issued an incorrect (" + obj.replace("-", " ") + ") control action: " + text + "; to " + comp.name_dst + "."
-                        req = "The process model in " + controller.name + " must represent the " + cp.name + " and " + comp.name_dst + "."
+                        req = "The process model in " + controller.name + " shall represent the " + cp.name + " and " + comp.name_dst + "."
                         result.append(Loss_Scenery(side, causal_factor_name, comp.name_dst, cause, req, controller.id, controller.id, comp.id_component_src, comp.id_component_dst, comp.name_src, comp.name_dst, "", Constant.STPA_CONTROL_PATH))
 
                     if obj.replace("-", " ") == "missing":
                         cause = controller.name + " does not provide (" + obj.replace("-", " ") + ") the control action: " + text + "; to " + comp.name_dst + "."
-                        req = "The communication of " + controller.name + " to " + comp.name_dst + " must be improved."
+                        req = "The communication of " + controller.name + " to " + comp.name_dst + " shall be improved."
                         result.append(Loss_Scenery(side, causal_factor_name, comp.name_dst, cause, req, controller.id, controller.id, comp.id_component_src, comp.id_component_dst, comp.name_src, comp.name_dst, "", Constant.STPA_CONTROL_PATH))
                         # correct ^
                         cause = comp.name_dst + " does not provide the received control action (" + text + ") from " + controller.name + "."
-                        req = "The " + comp.name_dst + " must have ongoing analysis after system modification."
+                        req = "The " + comp.name_dst + " shall have ongoing analysis after system modification."
                         result.append(Loss_Scenery(side, causal_factor_name, comp.name_dst, cause, req, controller.id, comp.id_component_dst, comp.id_component_src, comp.id_component_dst, comp.name_src, comp.name_dst, "", Constant.STPA_CONTROL_PATH))
 
                     if obj.replace("-", " ") == "conflicting" and cp != None:
                         cause = controller.name + " issued an conflicting control action: " + text + "; to " + comp.name_dst + "."
-                        req = "The process model in " + controller.name + " must represent the " + cp.name + " and " + comp.name_dst + "."
+                        req = "The process model in " + controller.name + " shall represent the " + cp.name + " and " + comp.name_dst + "."
                         result.append(Loss_Scenery(side, causal_factor_name, comp.name_dst, cause, req, controller.id, controller.id, comp.id_component_src, comp.id_component_dst, comp.name_src, comp.name_dst, "", Constant.STPA_CONTROL_PATH))
 #(side, onto_name, component, causes, requirement, id_controller, id_component, id_component_src, id_component_dst, name_src = "", name_dst = "", mechanism = ""):
         return result

@@ -174,7 +174,7 @@ def load_STPA_report(id_project, current_date):
             item_uca_u_desc += uca.description
         get_label_11_text(item_uca_u_desc)
 
-        item_uca_s = "SC-" + str(count_usc) + ": " + uca.name_controller + " must " + get_opposite_uca(
+        item_uca_s = "SC-" + str(count_usc) + ": " + uca.name_controller + " shall " + get_opposite_uca(
             uca.id_uca_type) + " " + uca.name_action
         if text_context == "":
             item_uca_s += " in any context."

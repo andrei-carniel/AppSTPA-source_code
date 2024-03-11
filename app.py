@@ -1193,7 +1193,7 @@ class MainWindow:
                 item_uca_u_desc += uca.description
             layout.addWidget(self.get_label_11_text(item_uca_u_desc))
 
-            item_uca_s = "SC-" + str(count_usc) + ": " + uca.name_controller + " must " + self.get_opposite_uca(
+            item_uca_s = "SC-" + str(count_usc) + ": " + uca.name_controller + " shall " + self.get_opposite_uca(
                 uca.id_uca_type) + " " + uca.name_action
             if text_context == "":
                 item_uca_s += " in any context."
